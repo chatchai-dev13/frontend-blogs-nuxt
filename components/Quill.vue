@@ -1,0 +1,63 @@
+<template>
+    <QuillEditor
+      v-model:content="contentProxy"
+      contentType="html"
+      :options="options"
+      style="height: 300px;"
+      id="quill-id"
+    />
+  </template>
+  
+  <script setup>
+  import { QuillEditor } from '@vueup/vue-quill'
+  import '@vueup/vue-quill/dist/vue-quill.snow.css'
+  import { ref, watch } from 'vue'
+  
+  // รับค่า content และ emit กลับเมื่อมีการเปลี่ยน
+  const props = defineProps({
+    content: {
+      type: String,
+      default: ''
+    }
+  })
+  const emit = defineEmits(['update:content'])
+  
+  const contentProxy = ref(props.content)
+  
+  // sync ข้อมูลจาก parent -> local
+  watch(() => props.content, (newVal) => {
+    if (newVal !== contentProxy.value) {
+      contentProxy.value = newVal
+    }
+  })
+  
+  // sync ข้อมูลจาก local -> parent
+  watch(contentProxy, (newVal) => {
+    emit('update:content', newVal)
+  })
+  
+  const options = {
+    modules: {
+      toolbar: [
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        ['link', 'image', 'video', 'formula'],
+        [{ header: 1 }, { header: 2 }],
+        [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
+        [{ script: 'sub' }, { script: 'super' }],
+        [{ indent: '-1' }, { indent: '+1' }],
+        [{ direction: 'rtl' }],
+        [{ size: ['small', false, 'large', 'huge'] }],
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ color: [] }, { background: [] }],
+        [{ font: [] }],
+        [{ align: [] }],
+        ['clean']
+      ]
+    },
+    placeholder: 'Compose here...',
+    readOnly: false,
+    theme: 'snow'
+  }
+  </script>
+  

@@ -61,6 +61,10 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
+useHead({
+  title: 'Admin',
+})
+
 const {
     fnLogout
 } = useAdmin();

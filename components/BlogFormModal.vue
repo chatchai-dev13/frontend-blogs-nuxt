@@ -1,6 +1,5 @@
 <template>
-    <div class="modal fade" id="modal-add" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="modal-add" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLabel">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -25,7 +24,7 @@
                     </div>
                     <div class="mb-3">
                         <ClientOnly>
-                            <Quill v-model:content="content" />
+                            <QuillEditor v-model:content="content" />
                         </ClientOnly>
                     </div>
                 </div>
@@ -39,7 +38,7 @@
 </template>
 
 <script setup>
-import Quill from '~/components/Quill.vue'
+import QuillEditor from '@/components/QuillEditor.vue'
 import Swal from 'sweetalert2'
 
 defineEmits(['submitForm']);

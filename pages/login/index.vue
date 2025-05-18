@@ -5,12 +5,12 @@
       <form @submit.prevent="fnLogin()">
         <div class="mb-3">
           <label for="email" class="form-label">Email address</label>
-          <input v-model="email" id="email" type="email" class="form-control" placeholder="Enter email">
+          <input v-model="email" id="email" type="email" class="form-control" placeholder="Enter email" autocomplete="email">
           <small v-if="emailError" class="text-danger">{{ emailError }}</small>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input v-model="password" id="password" type="password" class="form-control" placeholder="Password">
+          <input v-model="password" id="password" type="password" class="form-control" placeholder="Password" autocomplete="current-password">
           <small v-if="passwordError" class="text-danger">{{ passwordError }}</small>
         </div>
         <button type="submit" class="btn btn-primary w-100">Login</button>
@@ -39,13 +39,13 @@
             </div>
             <div class="mb-3">
               <label for="reg-email" class="form-label">Email address</label>
-              <input v-model="reg_email" id="reg-email" type="email" class="form-control" placeholder="Enter email">
+              <input v-model="reg_email" id="reg-email" type="email" class="form-control" placeholder="Enter email" autocomplete="email">
               <small v-if="reg_emailError" class="text-danger">{{ reg_emailError }}</small>
             </div>
             <div class="mb-3">
               <label for="reg-password" class="form-label">Password</label>
               <input v-model="reg_password" id="reg-password" type="password" class="form-control"
-                placeholder="Password">
+                placeholder="Password" autocomplete="new-password">
               <small v-if="reg_passwordError" class="text-danger">{{ reg_passwordError }}</small>
             </div>
           </div>

@@ -1,6 +1,5 @@
 import { BASE_API_URL } from "~/utils/constants";
 import axios from "axios";
-import Swal from 'sweetalert2';
 
 export const login = async (data) => {
   try {
